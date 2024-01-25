@@ -1,0 +1,21 @@
+
+<h1><%= @restaurant.name %></h1>
+<ul>
+  <li><%= @restaurant.address %></li>
+  <li><%= @restaurant.phone_number %></li>
+</ul>
+
+
+<h2>Reviews</h2>
+<% if @reviews.any? %>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li> <%= review.content %> (Rating: <%= review.rating %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>
+
+<%= link_to "Back to Restaurants", restaurants_path, class: "btn btn-secondary" %>
+<%= link_to "Write a Review", new_review_path(restaurant_id: @restaurant.id), class: "btn btn-primary" %>
